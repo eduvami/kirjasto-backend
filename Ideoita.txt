@@ -1,0 +1,27 @@
+Ideoita
+
+Miltä näyttäisi?
+
+1. S, A, B, C, D, F
+2. 5, 4, 3, 2, 1
+3. 10, 9, 8, 7, 6, 5, 4
+4. Stars *****
+5.
+
+Koodaus
+
+funktio joka kertoisi kaikkien kirjojen keskiarvon (kirjaston suosio)
+funktio joka kertoo kirjan arvostelujen keskiarvon
+
+jos vaikka kirjoja arvostellaan numeroilla 1-5
+
+def 
+def kirjan_arvosana(numero: list)
+	keskiarvo = 0
+	for 
+
+Tiedostoon voisi kirjoittaa seuraavasti:
+
+[
+{
+]

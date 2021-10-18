@@ -1,0 +1,63 @@
+import json
+
+class Rating:
+
+    def __init__(self):
+        self.dictionary = {}
+
+    def initialize_dictionary(self, file):
+        list = []
+        for i in list:
+            self.dictionary[i] = []
+
+
+    def give_rating(self, book_name, user_name: str, number: int):
+        self.dictionary[user_name] = number
+
+    def assess_ratings(self):
+        average = 0
+        sum = 0
+
+        for i in self.dictionary:
+            sum += self.dictionary[i]
+        if len(self.dictionary) > 0:
+            average = sum / len(self.dictionary)
+            return average
+        else:
+            return 0
+    
+    def get_data(self, file):
+
+        with open(file) as datafile:
+            data = datafile.read()
+        Information = json.loads(data)
+        for rating in Information:
+            self.dictionary[rating["Name"]] = rating["Rating"]
+            print(rating[1])
+
+
+    def set_data(data):
+        with open("testi.json", "w") as datafile:
+            json.dump(data, datafile)
+        
+
+    def assess_given(self, ratings: list):
+        average = 0
+        sum = 0
+        for number in ratings:
+            sum += number
+        average = sum / len(ratings)
+        return average
+        
+
+#def all_ratings(ratings: list):
+
+    #def __str__(self):
+        #return self.dictionary
+
+if __name__ == "__main__":
+    rating = Rating()
+    rating.give_rating("kalle", 2)
+    rating.get_data("testi.json")
+    print(rating.assess_ratings())
+    #print(rating)
