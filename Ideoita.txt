@@ -25,3 +25,11 @@ Tiedostoon voisi kirjoittaa seuraavasti:
 [
 {
 ]
+
+
+OK
+nyt pitäs tehdä sekä kirjalle, että arvostelijalle omat listat arvosanoista
+Kirjalle infoa saaduista arvosanoista ja arvostelijoista
+Arvostelijalle infoa kirjoista ja arvosanoista
+
+test4.json on vähän kuvaa miten vois tehdä

@@ -1,0 +1,43 @@
+[
+    {
+        "Book_name": "Web security for developers",
+        "Name": "Kalle",
+        "Rating": "4"
+    },
+    
+    {
+        "Book_name": "Eloquent Javascript",
+        "Name": "Pekka",
+        "Rating": "4"
+    },
+    
+    {
+        "Book_name": "Don't make me think",
+        "Name": "Jaana",
+        "Rating": "4"
+    },
+    
+    {
+        "Book_name": "A smarter way to learn Javascript",
+        "Name": "Joni",
+        "Rating": "4"
+    },
+    
+    {
+        "Book_name": "CSS in depth",
+        "Name": "Pete",
+        "Rating": "4"
+    },
+    
+    {
+        "Book_name": "Head First Design Patterns",
+        "Name": "Saara",
+        "Rating": "4"
+    },
+    
+    {
+        "Book_name": "Head First Java",
+        "Name": "Sanni",
+        "Rating": "4"
+    }
+]
