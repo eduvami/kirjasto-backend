@@ -1,0 +1,32 @@
+Eteneminen
+
+
+20.10.2021
+
+Pitää vielä miettiä haluttuja toimintoja
+Pitää joko valita vain tiedostoihin tallentaminen ja tiedostoista tiedon ottaminen tai sanakirjat ja luokat
+tai saada molemmat toimimaan
+
+tällä hetkellä on koko ajan jotain pientä ongelmaa sanakirjojen kanssa
+
+nyt seuraavaksi
+
+- kirjoita halutut toiminnot
+- tee sovellus ensiksi ilman sanakirjoja tai tee vain tarvittaessa
+
+
+
+
+
+
+Halutut toiminnot
+
+1. Kirjan arvosteleminen
+- tarvii käyttäjänimen ja salasanan
+2. Meanscoren näkeminen
+- on mahdollista nähdä arvostelunsa sekä arvostelujen keskiarvo
+3. Kirjan arvosanan näkeminen
+- on mahdollista nähdä kirjan arvostelujen keskiarvon sekä kuinka moni on arvostellut
+4. tietojen meneminen tiedostoon
+5. tietojen ottaminen tiedostosta
+6. API

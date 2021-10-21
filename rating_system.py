@@ -6,7 +6,7 @@ class Rating:
         self.Mean_score = {}
         self.Book_score = {}
 
-    def initialize_Bookscore(self, file_from, file_to):
+    def initialize_Book_score(self, file_from, file_to):
 
         with open(file_from) as datafile:
             data = datafile.read()
@@ -14,11 +14,20 @@ class Rating:
         for rating in Information:
             self.Book_score[rating["Name"]] = []
 
+    def initialize_Mean_score(self, file_from, file_to):
+
+        with open(file_from) as datafile:
+            data = datafile.read()
+        Information = json.loads(data)
+        for rating in Information:
+            self.Mean_score[rating["Name"]] = []
+
     def give_rating(self, book_name, user_name: str, number: int):
-        if len(self.Book_score) == 0:
+        if len(self.Book_score) == 0 or len(self.Mean_score) == 0:
             pass
         else:
             self.Book_score[book_name].append({user_name : number})
+            self.Mean_score[user_name].append({book_name : number})
 
     def assess_ratings(self):
         average = 0
@@ -90,8 +99,9 @@ class Rating:
 
 if __name__ == "__main__":
     rating = Rating()
-    rating.initialize_Bookscore("test2.json", "test3.json")
-    rating.give_rating("Eloquent Javascript", "kalle", 2)
+    rating.initialize_Book_score("test2.json", "test3.json")
+    rating.initialize_Mean_score("test.json", "test4.json")
+    rating.give_rating("Eloquent Javascript", "Petteri", 2)
     print(rating.get_data_from_file("test.json"))
     #rating.get_data("test.json")
     print(rating.assess_ratings())
