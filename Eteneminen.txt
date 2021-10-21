@@ -14,6 +14,31 @@ nyt seuraavaksi
 - kirjoita halutut toiminnot
 - tee sovellus ensiksi ilman sanakirjoja tai tee vain tarvittaessa
 
+21.10.2021
+
+Tein nyt juuri toistepäin eli tein ensiksi sanakirjatoiminnon
+
+Nyt kirjoja voi siis arvostella ja nähdä kirjojen ja meanscoren arvosanat
+Myös tiedostoon kirjoittaminen onnistuu
+
+nyt seuraavaksi
+
+1. mieti json tiedostojen rakennetta
+2. mieti miten sellaisen rakenteen saa kirjoittamalla tiedostoon
+3. tee mahdolliseksi sanakirjojen updateeminen tiedostojen avulla !!!!!!!!!!!!!!!!!
+4. tee myös tiedostosta tiedostoon kirjoittamisen mahdolliseksi
+?. mieti API puolta
+- miten koodia voi käyttää hyödyksi?
+
+ehkä
+
+pitää miettii et jos haluu lisää jotain extra infoo
+
+Mitä extraa?
+
+Pitää miettiä säännöt käyttäjänimille
+Pitää olla kelvollinen kirja eli kirjan pitää olla järjestelmässä
+
 
 
 
@@ -29,4 +54,7 @@ Halutut toiminnot
 - on mahdollista nähdä kirjan arvostelujen keskiarvon sekä kuinka moni on arvostellut
 4. tietojen meneminen tiedostoon
 5. tietojen ottaminen tiedostosta
+
 6. API
+
+

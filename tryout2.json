@@ -1,1 +1,46 @@
-{"Eloquent Javascript": [{"Petteri": 2}, {"Saana": 2}], "Don't make me think": [{"Petteri": 2}]}
+{
+    "A smarter way to learn Javascript: The new approach that uses technology to cut your effort in half": [
+        {
+            "Joni": "4"
+        }
+    ],
+    "CSS in depth": [
+        {
+            "Pete": "4"
+        }
+    ],
+    "Don't make me think: A common sense approuch to web usability, 2nd Edition": [
+        {
+            "Petteri": 2
+        },
+        {
+            "Jaana": "4"
+        }
+    ],
+    "Eloquent Javascript": [
+        {
+            "Petteri": 2
+        },
+        {
+            "Saana": 2
+        },
+        {
+            "Pekka": "4"
+        }
+    ],
+    "Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software 2nd Edition": [
+        {
+            "Saara": "4"
+        }
+    ],
+    "Head First Java: 2nd Edition": [
+        {
+            "Sanni": "4"
+        }
+    ],
+    "Web security for developers": [
+        {
+            "Kalle": "4"
+        }
+    ]
+}

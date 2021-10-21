@@ -12,13 +12,13 @@
     },
     
     {
-        "Book_name": "Don't make me think",
+        "Book_name": "Don't make me think: A common sense approuch to web usability, 2nd Edition",
         "Name": "Jaana",
         "Rating": "4"
     },
     
     {
-        "Book_name": "A smarter way to learn Javascript",
+        "Book_name": "A smarter way to learn Javascript: The new approach that uses technology to cut your effort in half",
         "Name": "Joni",
         "Rating": "4"
     },
@@ -30,13 +30,13 @@
     },
     
     {
-        "Book_name": "Head First Design Patterns",
+        "Book_name": "Head First Design Patterns: Building Extensible and Maintainable Object-Oriented Software 2nd Edition",
         "Name": "Saara",
         "Rating": "4"
     },
     
     {
-        "Book_name": "Head First Java",
+        "Book_name": "Head First Java: 2nd Edition",
         "Name": "Sanni",
         "Rating": "4"
     }

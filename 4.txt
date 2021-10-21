@@ -7,16 +7,13 @@ class Rating:
         self.Book_score = {}
 
     def give_rating(self, book_name, user_name: str, number: int):
-        if self.is_book_in_file(book_name) == True:
-            if book_name not in self.Book_score:
-                self.Book_score[book_name] = []
-            if user_name not in self.Mean_score:
-                self.Mean_score[user_name] = []
+        if book_name not in self.Book_score:
+            self.Book_score[book_name] = []
+        if user_name not in self.Mean_score:
+            self.Mean_score[user_name] = []
 
-            self.Book_score[book_name].append({user_name : number})
-            self.Mean_score[user_name].append({book_name : number})
-        else:
-            print("Book is not in the file or the username is not correct")
+        self.Book_score[book_name].append({user_name : number})
+        self.Mean_score[user_name].append({book_name : number})
 
     #kaikkien kirjojen yhteinen rating
     def assess_overall_book_ratings(self):
@@ -82,58 +79,41 @@ class Rating:
         else:
             return 0
 
-    def is_book_in_file(self, book):
-        list = []
-        with open("test2.json") as datafile:
-            data = datafile.read()
-        Information = json.loads(data)
-        for i in Information:
-            list.append(i["Name"])
-        if book in list:
-            return True
-        else:
-            return False
-
-    #tätä pitää vielä parantaa
-    #nyt joku voi arvata käyttäjänimen ja arvostella
-    #ehkä API juttu?
-    #tarvii tiedoston missä on käyttäjät ja tiedot niistä
-    #nyt ei siis toimi vielä
-    def is_username_in_file(self, username):
-        list = []
-        with open("test.json") as datafile:
-            data = datafile.read()
-        Information = json.loads(data)
-        for i in Information:
-            list.append(i["Name"])
-        if username in list:
-            return True
-        else:
-            return False
-
-    #tätä voi käyttää oikeestaan kaikkeen tiedon siirtoon
+    #toimii oikein
+    #pitää viel muokkaa oikeeseen muotoon
+    #pitää kattoo onnistuuko dumpin kans
     def set_data(self, file, data):
         with open(file, "w") as datafile:
-            json.dump(data, datafile, sort_keys=True, indent=4)
+            json.dump(data, datafile)
+
+    def assess_given(self, ratings: list):
+        average = 0
+        sum = 0
+        for number in ratings:
+            sum += number
+        average = sum / len(ratings)
+        return average
 
     #pitää miettii miten säilyttää tietoja
     #missä on uusimmat tiedot vai liikkuuko kokoajan
     def get_data_from_file(self, file):
+
         with open(file) as datafile:
             data = datafile.read()
         Information = json.loads(data)
+        #for rating in Information:
+            #print(rating)
         return Information
 
-    #pitää miettii et ku täs käytetää json tiedostoa jos on infoa arvosteluista
-    #ni vois tehä jonku muun jutun vaik kirja infoille
-    # ja just seki et arvostelu hyväksyttäis vaan jos se olis legitti eli et käyttäjänimi olis hyväksyttävä
-    # ja kirja tiedostois
-    def update_scores_with_file(self, file):
+    #Pitää miettii haluuko siirtää tiedostosta toiseen tietoja
+    def set_data_to_file(self, file):
+
         with open(file) as datafile:
             data = datafile.read()
         Information = json.loads(data)
-        for i in Information:
-            self.give_rating(i["Book_name"], i["Name"], i["Rating"])
+        #for rating in Information:
+            #print(rating)
+        return Information
     
     def get_mean_info(self):
         return self.Mean_score
@@ -145,17 +125,13 @@ if __name__ == "__main__":
     rating = Rating()
     rating.give_rating("Eloquent Javascript", "Petteri", 2)
     rating.give_rating("Eloquent Javascript", "Saana", 2)
-    rating.give_rating("Don't make me think: A common sense approuch to web usability, 2nd Edition", "Petteri", 2)
+    rating.give_rating("Don't make me think", "Petteri", 2)
 
-    #print(rating.get_data_from_file("test.json"))
+    print(rating.get_data_from_file("test.json"))
     ##rating.get_data("test.json")
-
-    rating.update_scores_with_file("test.json")
-    #rating.is_book_in_file("Don't make me think")
 
     rating.set_data("tryout.json", rating.get_mean_info())
     rating.set_data("tryout2.json", rating.get_book_info())
-    #rating.set_data("tryout2.json", rating.get_data_from_file("test.json"))
 
     #print(rating.assess_book_rating("Eloquent Javascript"))
     #print(rating.assess_overall_book_ratings())
