@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block head %}
+<title>Comment Section</title>
+{% endblock %}
+
+{% block body %}
+<h1>Leave a comment</h1>
+
+<p>
+  You can leave me a comment below, or see comments from other people <a href="{{ url_for('messages') }}">here</a>
+</p>
+
+<div class="large-8 columns">
+<form action="/submit_message" method="post">
+  <input type="text" placeholder="Name" name="who">
+  <textarea placeholder="Enter your message here" name="message" cols="50" rows="4"></textarea>
+  <input type="submit" value="Submit">
+</form>
+</div>
+
+{% endblock %}
