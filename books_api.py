@@ -14,11 +14,12 @@ class Status(Resource):
     def get(self):
         #from query import db_query
         return db_query()
+
 class RetrieveID(Resource):            
     def get(self, book_id):    
-        client = MongoClient('localhost', 27017)
-        db = client['Laiberi']
-        collection = db['books']
+        client = MongoClient("mongodb+srv://kirjastoAdmin:<password>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        db = client['kirjasto-backend']
+        collection = db['backendAPI']
         retrievedID = list(collection.find({'Book ID' : book_id,}, {
              '_id': False
             }))
@@ -48,9 +49,9 @@ class Loan (Resource):
         
         args = parser.parse_args()
         # Checking if the book name already exists.        
-        client = MongoClient('localhost', 27017)
-        db = client['Laiberi']
-        collection = db['books']
+        client = MongoClient("mongodb+srv://kirjastoAdmin:<password>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        db = client['kirjasto-backend']
+        collection = db['backendAPI']
         # had to make _id not show, because it threw a not json serializable error.
         retrieved = list(collection.find({}, {'_id' : False}))
         #iterate through retrieved and find if post value "name" is the same as database value Name.
