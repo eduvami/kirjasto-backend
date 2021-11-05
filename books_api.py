@@ -15,16 +15,21 @@ class Status(Resource):
         #from query import db_query
         return db_query()
 
-class RetrieveID(Resource):            
+class StatusID(Resource):            
     def get(self, book_id):    
-        client = MongoClient("mongodb+srv://kirjastoAdmin:<password>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:s327iv6bUGZWfD@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         retrievedID = list(collection.find({'Book ID' : book_id,}, {
-             '_id': False
-            }))
-        return retrievedID
-
+         '_id': False
+        }))
+        # Check if input is an int, otherwise throw an error
+        for booknumbers in retrievedID:    
+            if int(book_id):
+                return retrievedID
+        else:
+            return 'error: Not a valid BookID! Book ID must be an int and the book must exist!', 400
+            
 class Books(Resource):
 # Class for getting the details of all of the books in the books collection
     def get(self):
@@ -49,7 +54,7 @@ class Loan (Resource):
         
         args = parser.parse_args()
         # Checking if the book name already exists.        
-        client = MongoClient("mongodb+srv://kirjastoAdmin:<password>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:s327iv6bUGZWfD@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         # had to make _id not show, because it threw a not json serializable error.
@@ -192,8 +197,8 @@ class Comments(Resource):
     def push(self):
         return 401
 
-api.add_resource(Status, '/status') 
-api.add_resource(RetrieveID, '/status/<book_id>')
+api.add_resource(Status, '/status')
+api.add_resource(StatusID, '/status/<book_id>')
 api.add_resource(Books, '/books')
 api.add_resource(Loan, '/loan')
 api.add_resource(Comments, '/comments')

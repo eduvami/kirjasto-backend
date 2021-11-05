@@ -4,7 +4,7 @@ from flask_restful import reqparse
 def db_query():
 # Connecting to the database and returning query of values that include the following: Book ID, Name, Loan Status.
         
-        client = MongoClient("mongodb+srv://kirjastoAdmin:<password>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:s327iv6bUGZWfD@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         # had to make id not show, because it threw a not json serializable error.
@@ -14,7 +14,7 @@ def db_query():
         return retrievedStatus, 200        
 def db_full_query():
     # Connecting to the database and returning query of all values.
-        client = MongoClient("mongodb+srv://kirjastoAdmin:<password>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:s327iv6bUGZWfD@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         retrievedFull = list(collection.find({}, {'_id' : False}))
