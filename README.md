@@ -8,11 +8,22 @@ Boris ([BorisHiltunen](https://github.com/BorisHiltunen))
 
 Siim ([shiimu](https://github.com/shiimu))
 
+# Tools and Libraries
+- [Flask](https://flask.palletsprojects.com/en/2.0.x/)
+- [MongoDB](https://www.mongodb.com/)
+- [flask-restful](https://flask-restful.readthedocs.io/en/latest/)
+
 # Api endpoints:
 
-127.0.0.1:8080/
+Localhost:8000/
 
-<b>GET, POST, PUT, DELETE</b>
+<b>GET</b>
+- Status
+- Status/id
+- Books
+
+<b>POST</b>
+- Loan
 
 POST, PUT and DELETE currently require all of the arguments listed below
 
