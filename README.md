@@ -13,25 +13,46 @@ Siim ([shiimu](https://github.com/shiimu))
 - [MongoDB](https://www.mongodb.com/)
 - [flask-restful](https://flask-restful.readthedocs.io/en/latest/)
 
+# Setup
+
+<b>Requirements</b>
+- Flask
+- Mongodp
+- Git clone
+- 
+
 # Api endpoints:
 
 Localhost:8000/
 
+In use
+
 <b>GET</b>
 - Status
+Returns every book's status
 - Status/id
+Returns book information by book id
 - Books
+Returns every book's information
 
 <b>POST</b>
 - Loan
+Updates book's loan status (True or False)
 
-POST, PUT and DELETE currently require all of the arguments listed below
+To do
 
-<b>available</b> - lists all the books available for loaning. <br />
-arguments: name, writer, year, isbn, rating, about, tags, description
+<b>GET</b>
+- Comments
+Returns all comments
+- Comments/id
+Returns Comment by book id
+- Status/id
+Returns book information by book id
 
-<b>borrowed</b> - lists all the books that are currently being loaned out. <br />
-arguments: name, writer, year, isbn, rating, about, tags, description, borrower
+<b>POST</b>
+- Comment
+Posts one comment
 
-<b>comments</b> - lists all the comments. <br />
-arguments: commenter, message
+<b>Delete</b>
+- Comments
+Delete comment by comment id
