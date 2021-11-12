@@ -10,7 +10,7 @@ api = Api(app)
 
 
 class Status(Resource):
-# Class for getting the status for all of the books in the books collection
+# Get the status for all of the books in the books collection
     def get(self):
         #from query import db_query
         return db_query()
@@ -31,12 +31,12 @@ class StatusID(Resource):
             return 'error: Not a valid BookID! Book ID must be an int and the book must exist!', 400
             
 class Books(Resource):
-# Class for getting the details of all of the books in the books collection
+# Get the details of all of the books in the books collection
     def get(self):
         return db_full_query()
 
 class Loan (Resource):
-# Class for manipulating the loaning system for the books in the books collection
+# Manipulate the loaning system for the books in the books collection
     def post(self):
         # Require these args for the POST request.
         parser = reqparse.RequestParser()
@@ -57,14 +57,13 @@ class Loan (Resource):
         client = MongoClient("mongodb+srv://kirjastoAdmin:s327iv6bUGZWfD@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
-        # had to make _id not show, because it threw a not json serializable error.
         retrieved = list(collection.find({}, {'_id' : False}))
-        #iterate through retrieved and find if post value "name" is the same as database value Name.
+        #iterate through retrieved and find if POST value "name" is the same as database value Name.
         #if true -> update. else throw errors.
-        for name in retrieved:
-            if args['name'] in name['Name']:
-                new_book = collection.find_one_and_update(name,{"$set": parse()})
-            elif args['name'] not in name['Name']:
+        for booknames in retrieved:
+            if args['name'] in booknames['Name']:
+                new_book = collection.find_one_and_update(booknames,{"$set": parse()})
+            elif args['name'] not in booknames['Name']:
                 return {'message': f"'{args['name']}' doesnt exist."
                 }, 401
             else:
