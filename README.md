@@ -28,31 +28,31 @@ Localhost:8000/
 In use
 
 <b>GET</b>
-- Status
+- Status </br>
 Returns every book's status
-- Status/id
+- Status/id </br>
 Returns book information by book id
-- Books
+- Books </br>
 Returns every book's information
 
 <b>POST</b>
-- Loan
+- Loan </br>
 Updates book's loan status (True or False)
 
 To do
 
 <b>GET</b>
-- Comments
+- Comments </br>
 Returns all comments
-- Comments/id
+- Comments/id </br>
 Returns Comment by book id
-- Status/id
+- Status/id </br>
 Returns book information by book id
 
 <b>POST</b>
-- Comment
+- Comment </br>
 Posts one comment
 
 <b>Delete</b>
-- Comments
+- Comments </br>
 Delete comment by comment id
