@@ -4,7 +4,7 @@ from flask_restful import reqparse
 def db_query():
 # Connecting to the database and returning query of values that include the following: Book ID, Name, Loan Status.
         
-        client = MongoClient("mongodb+srv://kirjastoAdmin:8MmbYAmEj9FwLn@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         # had to make id not show, because it threw a not json serializable error.
@@ -15,7 +15,7 @@ def db_query():
         return retrievedStatus, 200 
 def db_full_query():
     # Connecting to the database and returning query of all values.
-        client = MongoClient("mongodb+srv://kirjastoAdmin:8MmbYAmEj9FwLn@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         retrievedFull = list(collection.find({}, {'_id' : False}))
@@ -23,7 +23,7 @@ def db_full_query():
 def parse():
 # Required values for the api requests. False would be optional
     parser = reqparse.RequestParser()
-#    parser.add_argument('book_id', required = True)     
+    parser.add_argument('book_id', required = True)     
 #    parser.add_argument('name', required = True)
 #    parser.add_argument('writer', required = True)
 #    parser.add_argument('year', required = True)

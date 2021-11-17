@@ -16,7 +16,7 @@ class Status(Resource):
         
 class StatusID(Resource):            
     def get(self, book_id):    
-        client = MongoClient("mongodb+srv://kirjastoAdmin:8MmbYAmEj9FwLn@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         retrievedID = list(collection.find({'Book ID' : book_id,}, {
@@ -46,7 +46,7 @@ class Loan (Resource):
         
         args = parser.parse_args()
         # Checking if the book name already exists.        
-        client = MongoClient("mongodb+srv://kirjastoAdmin:8MmbYAmEj9FwLn@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         retrieved = list(collection.find({}, {'_id' : False}))
@@ -54,11 +54,8 @@ class Loan (Resource):
         #if true -> update. else throw errors.
         for booknumbers in retrieved:
             if args['book_id'] in booknumbers['Book ID']:
-                if args['loan_status'] is False:
-                    new_book = collection.find_one_and_update(booknumbers,{"$set": parse()})
-                #else:
-                #    return {'message': f" Book is already loaned out."}, 400
-            elif args['book_id'] not in booknumbers['Book ID']:
+                new_book = collection.find_one_and_update(booknumbers,{"$set": parse()})
+            elif args['book_id'] != booknumbers['Book ID']:
                 return {'message': f"'{args['book_id']}' doesnt exist."
                 }, 401
             else:
