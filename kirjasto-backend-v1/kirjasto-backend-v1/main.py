@@ -2,10 +2,15 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from pymongo import ALL, MongoClient
 from query import db_query, db_full_query, parse
+from comments import get_comments
 
 app = Flask(__name__)
 api = Api(app)
 
+# Initiate connection to mongoDB
+client = MongoClient("mongodb+srv://kirjastoAdmin:s3yS2zcXETkqCM@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+db = client['kirjasto-backend']
+collection = db['backendAPI']
 
 
 class Status(Resource):
@@ -15,10 +20,7 @@ class Status(Resource):
         return db_query()
         
 class StatusID(Resource):            
-    def get(self, book_id):    
-        client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-        db = client['kirjasto-backend']
-        collection = db['backendAPI']
+    def get(self, book_id):
         retrievedID = list(collection.find({'Book ID' : book_id,}, {
          '_id': False
         }))
@@ -46,9 +48,6 @@ class Loan (Resource):
         
         args = parser.parse_args()
         # Checking if the book name already exists.        
-        client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
-        db = client['kirjasto-backend']
-        collection = db['backendAPI']
         retrieved = list(collection.find({}, {'_id' : False}))
         #iterate through retrieved and find if POST value "book_id" is the same as database value Book ID.
         #if true -> update. else throw errors.
@@ -67,11 +66,17 @@ class Loan (Resource):
         retrieved = list(collection.find({}, {'_id' : False}))
         return retrieved, 200
  
+# Class for interacting with comments collection
+class Comments(Resource):
+    def get(self):
+        return get_comments(), 200
 
-api.add_resource(Status, '/status')
+
+api.add_resource(Status, '/status') 
 api.add_resource(StatusID, '/status/<book_id>')
 api.add_resource(Books, '/books')
 api.add_resource(Loan, '/loan')
+api.add_resource(Comments, '/comments')
 
 
 # Runs on port 8080!!
