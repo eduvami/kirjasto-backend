@@ -15,8 +15,9 @@ class Status(Resource):
         pass
 
 class StatusID(Resource):            
-    def get(self, book_id):    
-        client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    def get(self, book_id):
+        client = MongoClient("mongodb+srv://kirjastoAdmin:1xJzz9BE8j92m2rO@cluster0.7qrqy.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")   
+        # client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         retrievedID = list(collection.find({'Book ID' : book_id,}, {
