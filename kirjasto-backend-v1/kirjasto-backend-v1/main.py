@@ -7,8 +7,6 @@ from query import db_query, db_full_query, parse
 app = Flask(__name__)
 api = Api(app)
 
-
-
 class Status(Resource):
 # Get the status for all of the books in the books collection
     def get(self):
