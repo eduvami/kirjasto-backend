@@ -8,7 +8,6 @@ GET http://localhost:8000/loan
 ###
 GET http://localhost:8000/status/329218
 
-###
 
 ###
 POST http://localhost:8000/loan HTTP/1.1
