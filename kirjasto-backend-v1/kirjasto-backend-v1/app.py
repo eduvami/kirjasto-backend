@@ -14,7 +14,7 @@ class Status(Resource):
 
 class StatusID(Resource):            
     def get(self, book_id):
-        client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:1xJzz9BE8j92m2rO@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         retrievedID = list(collection.find({'Book ID' : book_id,}, {
@@ -51,7 +51,7 @@ class Loan (Resource):
         
         args = parser.parse_args()
         # Checking if the book name already exists.        
-        client = MongoClient("mongodb+srv://kirjastoAdmin:<PASSWORD>@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+        client = MongoClient("mongodb+srv://kirjastoAdmin:1xJzz9BE8j92m2rO@cluster0.6se1s.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
         db = client['kirjasto-backend']
         collection = db['backendAPI']
         retrieved = list(collection.find({}, {'_id' : False}))
@@ -71,14 +71,13 @@ class Loan (Resource):
 
         retrieved = list(collection.find({}, {'_id' : False}))
         return retrieved, 200
- 
+
 
 api.add_resource(Status, '/status')
 api.add_resource(StatusID, '/status/<book_id>')
 api.add_resource(Books, '/books')
 api.add_resource(Loan, '/loan')
 
-
 # Runs on port 8080!!
 if __name__ == "__main__":
-    app.run( debug = True, host='127.0.0.1', port=8000 )
+    app.run( host='127.0.0.1', port=8000 )
